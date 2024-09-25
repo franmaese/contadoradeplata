@@ -1,6 +1,5 @@
 #include <LiquidCrystal.h>
 
-// Pines de la pantalla LCD (según tu conexión)
 const int rs = 7;  // Pin RS de la LCD
 const int en = 8;  // Pin Enable de la LCD
 const int d4 = 9;  // Pin D4 de la LCD
@@ -10,17 +9,15 @@ const int d7 = 12; // Pin D7 de la LCD
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 // Pines de los sensores IR
-const int sensorIR1 = 2;  // Sensor IR 1 (frontal)
-const int sensorIR2 = 3;  // Sensor IR 2 (medio)
-const int sensorIR3 = 4;  // Sensor IR 3 (trasero)
+const int sensorIR1 = 2;  // Sensor IR 1 
+const int sensorIR2 = 3;  // Sensor IR 2 
+const int sensorIR3 = 4;  // Sensor IR 3 
 
-// Pin del botón para reiniciar el contador
 const int botonReset = 5;  // Botón de reinicio
 
 // Pin del buzzer o LED
 const int buzzer = 6;  // Buzzer o LED
 
-// Variable para contar los billetes
 int billeteContador = 0;
 
 // Variables para detectar el estado anterior de los sensores
@@ -30,11 +27,10 @@ int estadoAnterior3 = LOW;
 
 void setup() {
   // Configurar los pines de los sensores IR como entrada
-  pinMode(sensorIR1, INPUT);  // Entrada del sensor IR 1
-  pinMode(sensorIR2, INPUT);  // Entrada del sensor IR 2
-  pinMode(sensorIR3, INPUT);  // Entrada del sensor IR 3
+  pinMode(sensorIR1, INPUT); 
+  pinMode(sensorIR2, INPUT); 
+  pinMode(sensorIR3, INPUT); 
   
-  // Configurar el botón de reinicio como entrada
   pinMode(botonReset, INPUT_PULLUP); // Entrada del botón de reinicio con pull-up interno
   
   // Configurar el buzzer o LED como salida
@@ -52,9 +48,9 @@ void setup() {
 
 void loop() {
   // Leer el estado actual de los sensores IR
-  int estadoActual1 = digitalRead(sensorIR1);  // Estado del sensor IR 1
-  int estadoActual2 = digitalRead(sensorIR2);  // Estado del sensor IR 2
-  int estadoActual3 = digitalRead(sensorIR3);  // Estado del sensor IR 3
+  int estadoActual1 = digitalRead(sensorIR1); 
+  int estadoActual2 = digitalRead(sensorIR2); 
+  int estadoActual3 = digitalRead(sensorIR3); 
   
   // Detectar si un billete ha pasado (flanco descendente en cualquier sensor)
   if ((estadoActual1 == HIGH && estadoAnterior1 == LOW) ||
